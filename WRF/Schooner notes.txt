@@ -1,0 +1,26 @@
+Getting WRF running on Schooner:
+
+To list available modules that were compiled by OSCER staff:
+	module avail
+
+For compiling WRF/WPS & loading in job submission (currently, but make sure to use
+consistent versions when compiling and submitting jobs):
+	module load JasPer/1.900.1-intel-2016a
+	module load netCDF-Fortran/4.4.4-intel-2016a
+
+	export NETCDF=/opt/oscer/software/netCDF-Fortran/4.4.4-intel-2016a
+	export WRF_EM_CORE='1'
+	export WRFIO_NCD_LARGE_FILE_SUPPORT='1'
+
+or
+
+	setenv NETCDF /opt/oscer/software/netCDF-Fortran/4.4.4-intel-2016a
+	setenv WRF_EM_CORE 1
+	setenv WRFIO_NCD_LARGE_FILE_SUPPORT 1
+
+Compile WRF and WPS as normal with Intel option (15). Examples:
+	./compile em_quarter_ss >& compile.log
+	./compile em_real >& compile.log
+
+More info at wiki.oscer.ou.edu
+To learn about batch submission commands/syntax: man sbatch
